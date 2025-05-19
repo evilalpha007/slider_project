@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500&display=swap');
 
 @custom-variant dark (&:is(.dark *));
 
@@ -119,6 +120,7 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -126,12 +128,22 @@
 
 
 .hero-background {
+  position: relative;
+  z-index: 0;
+}
+
+.hero-background::before {
+  content: "";
+  position: absolute;
+  inset: 0;
   background-image: url('/assets/images/bg.jpg');
-  
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+  opacity: 0.3;
+  z-index: -1;
 }
+
 
 .tab-button {
   @apply px-6 py-2 rounded-full transition-all duration-300;
@@ -160,18 +172,28 @@
 
 
 .arrow-button {
-  @apply flex items-center justify-center w-10 h-10 rounded-full 
-         bg-gray-800/70 text-white hover:bg-gray-800 transition-all;
+  @apply flex items-center justify-center w-10 h-10 rounded-full bg-gray-800/70 text-white hover:bg-gray-800 transition-all;
 }
 
 .section-title {
-  @apply tracking-widest  font-medium  inline-block px-4 py-1 rounded-[100px] ;
-  background-color: var(--bg-tag);
-  color:var(--color-tag)
+  @apply tracking-widest font-medium inline-block px-4 py-1 rounded-[100px];
+  background-color: #DFE8EF80 ;
+  font-weight: 500;
+  color:#31414E;
 }
 
+.fade-mask {
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+
 .main-title {
-  @apply text-4xl md:text-6xl lg:text-6xl text-left font-bold uppercase  tracking-wider;
+  @apply text-4xl md:text-6xl lg:text-6xl text-left font-bold uppercase tracking-wider;
 }
 
 .gradient-text {

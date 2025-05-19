@@ -1,4 +1,5 @@
 "use client";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import React, { useRef, useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
@@ -24,6 +25,10 @@ interface Place {
   visitPeriod: string;
   images: string[];
 }
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"], // You can adjust weights as needed
+});
 
 const categories: Category[] = [
   { id: "flora", name: "Flora" },
@@ -61,7 +66,7 @@ const places: Place[] = [
   {
     id: "3",
     category: "feni",
-    cardBg: "#384b58",
+    cardBg: "#DFE8EF",
     bg: "#fff",
     title: "Local Distilleries",
     tags: ["Culture", "Experience"],
@@ -91,7 +96,6 @@ const PlacesCarousel: React.FC = () => {
       slider1Ref.current.slickNext();
       slider2Ref.current.slickNext();
     }
-
   };
 
   const prevSlide = () => {
@@ -174,7 +178,9 @@ const PlacesCarousel: React.FC = () => {
               } transform transition-all duration-300 ease-in-out z-[2]`
             : ""
         }
-        transition-all duration-300 ease-in-out px-10 py-2  relative rounded-t-2xl lg:px-16 lg:p-3 -mr-5 
+        transition-all duration-300 ease-in-out px-10 py-2  relative rounded-t-2xl lg:px-16 lg:p-3 -mr-5 ${
+          plusJakarta.className
+        }
       `}
               >
                 <h2 className="">{category.name}</h2>
@@ -184,7 +190,7 @@ const PlacesCarousel: React.FC = () => {
 
           <div
             style={{ backgroundColor: currentBg }}
-            className="flex flex-col md:flex-row overflow-hidden rounded-tl-none rounded-2xl transition-all duration-300 p-6 shadow-2xl gap-5"
+            className="flex flex-col md:flex-row overflow-hidden rounded-tl-none rounded-2xl transition-all duration-300 p-4 shadow-2xl gap-3"
           >
             <div className="md:w-1/3 relative transition-all duration-300">
               <ImageWithFade
@@ -245,7 +251,7 @@ const DetailsCard = ({
       style={{ backgroundColor: place.cardBg }}
       className={`
   
-  relative  lg:h-[480px]  text-white  flex flex-col justify-between rounded-2xl items-start`}
+  relative  lg:h-[480px]  text-white  flex flex-col justify-between rounded-2xl items-start ${plusJakarta.className}`}
     >
       <div>
         <div className="  p-6 pt-8 pb-10 lg:pb-32 relative">
@@ -254,7 +260,8 @@ const DetailsCard = ({
               style={{
                 borderImageSource:
                   "linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(102, 102, 102, 0.1) 100%)",
-                  background: "linear-gradient(180deg, rgba(164, 165, 166, 0.21) 3.31%, rgba(255, 255, 255, 0.21) 94.97%)",
+                background:
+                  "linear-gradient(180deg, rgba(164, 165, 166, 0.21) 3.31%, rgba(255, 255, 255, 0.21) 94.97%)",
 
                 borderImageSlice: 1,
               }}
