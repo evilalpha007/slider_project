@@ -151,39 +151,37 @@ const PlacesCarousel: React.FC = () => {
     <div className="w-full">
       {
         <div className="max-w-5xl mx-auto">
-          <div className=" flex">
+          <div className="flex ">
             {categories.map((category, idx) => (
               <div
                 key={idx}
-                className={`${
-                  category.id === "fauna"
-                    ? " bg-[#384b58] text-white"
-                    : category.id === "feni"
-                    ? " bg-[#DFE8EF] text-[#020202]"
-                    : category.id === "flora"
-                    ? " bg-[#fff] text-[#23303B] font-medium"
-                    : " text-white"
-                } 
-                ${
-                  activeCategory === "flora"
-                    ? `
-                  ${category.id == "fauna" ? " z-[2] " : ""}
-                  `
-                    : ""
-                }
-           ${
-             activeCategory == category.id
-               ? `
-            ${category.id === "flora" ? " scale-100" : " scale-105 "}
-            transition-all duration-300 ease-in-out transform z-[999]`
-               : " "
-           }
-             transition-all duration-300 ease-in-out hover:scale-102 relative rounded-t-2xl px-16 p-3 -mr-5`}
+                className={`
+      center
+        ${
+          category.id === "fauna"
+            ? "bg-[#384b58] text-white"
+            : category.id === "feni"
+            ? "bg-[#DFE8EF] text-[#020202]"
+            : category.id === "flora"
+            ? "bg-[#fff] text-[#23303B] font-medium"
+            : "text-white"
+        }
+        ${activeCategory === "flora" && category.id == "fauna" ? "z-[2]" : ""}
+        ${
+          activeCategory == category.id
+            ? `${
+                category.id === "flora" ? "scale-100" : "scale-105"
+              } transform transition-all duration-300 ease-in-out z-[2]`
+            : ""
+        }
+        transition-all duration-300 ease-in-out px-10 py-2  relative rounded-t-2xl lg:px-16 lg:p-3 -mr-5 
+      `}
               >
-                <h2>{category.name}</h2>
+                <h2 className="">{category.name}</h2>
               </div>
             ))}
           </div>
+
           <div
             style={{ backgroundColor: currentBg }}
             className="flex flex-col md:flex-row overflow-hidden rounded-tl-none rounded-2xl transition-all duration-300 p-6 shadow-2xl gap-5"
@@ -247,10 +245,10 @@ const DetailsCard = ({
       style={{ backgroundColor: place.cardBg }}
       className={`
   
-  relative h-[480px]  text-white  flex flex-col justify-between rounded-2xl items-start`}
+  relative  lg:h-[480px]  text-white  flex flex-col justify-between rounded-2xl items-start`}
     >
       <div>
-        <div className="  p-6 pt-8 pb-32 relative">
+        <div className="  p-6 pt-8 pb-10 lg:pb-32 relative">
           <div className="  flex w-full">
             <div
               style={{
@@ -261,7 +259,7 @@ const DetailsCard = ({
                 borderImageSlice: 1,
               }}
               className={` 
-      inline-block  px-4 py-1 rounded-full text-sm mb-8`}
+      inline-block  px-4 py-1 rounded-full text-sm mb-5`}
             >
               {place.tags.join(" | ")}
             </div>
@@ -277,7 +275,7 @@ const DetailsCard = ({
             {place.title.split(" ")[1]} <br />
           </h1>
 
-          <div className="mt-8 flex flex-col items-start">
+          <div className=" mt-5 lg:mt-14 flex flex-col items-start">
             <p
               className={`
             ${place.id == "2" ? " text-gray-500" : " text-white"}
@@ -288,6 +286,7 @@ const DetailsCard = ({
             </p>
             <p
               className={`
+                mt-3
             ${place.id == "2" ? " text-gray-600" : " text-white"}
             
             text-xl mt-1`}
